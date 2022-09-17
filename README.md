@@ -10,6 +10,7 @@
 
 # Project roadmap
 - [ ] Start postgres container
+- [ ] Stop container
 - [ ] Get connection details
 - [ ] Select postgres version
 - [ ] Add tests
