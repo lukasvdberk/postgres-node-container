@@ -1,0 +1,14 @@
+{
+  "name": "postgres-node-container",
+  "version": "0.0.1",
+  "description": "Easily start a postgres docker container from your integration tests with Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "testcontainers": "^8.14.0"
+  }
+}
