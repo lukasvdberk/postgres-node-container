@@ -2,9 +2,11 @@
   "name": "postgres-node-container",
   "version": "0.0.1",
   "description": "Easily start a postgres docker container from your integration tests with Node",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
+    "build": "tsc --project tsconfig.json",
     "start": "tsc --project tsconfig.json && node dist/index.js",
     "test": "jest --config ./test/jest-e2e.json --runInBand --verbose"
   },
