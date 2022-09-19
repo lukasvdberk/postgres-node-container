@@ -5,7 +5,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
     "incremental": true,
@@ -13,9 +12,15 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": ".",
+    "allowJs": true,
     "moduleResolution": "Node",
-    "module": "CommonJS",
+    "target": "es2019",
+    "module": "commonjs"
   },
+  "include": [
+      "src/**/*",
+      "node_modules/@types/**/*"
+  ],
   "exclude": [
     "node_modules",
     "dist",

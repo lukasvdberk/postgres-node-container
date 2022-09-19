@@ -1,0 +1,11 @@
+{
+  "preset": "ts-jest",
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".spec.ts$",
+  "testTimeout": 60000,
+  "transform": {
+    "node_modules/get-port/.+\\.(j|t)sx?$": "ts-jest"
+  }
+}

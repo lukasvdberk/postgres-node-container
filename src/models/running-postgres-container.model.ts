@@ -22,14 +22,13 @@ export class RunningPostgresContainerModel {
      * Postgres' connection string you can use to connect to the container.
      */
     getPostgresConnectionString(): string {
-        return `postgres://${this.postgresUsername}:${this.postgresPassword}@${this.postgresDatabase}:${this.postgresPort}/${this.postgresDatabase}`
+        return `postgresql://${this.postgresUsername}:${this.postgresPassword}@${this.postgresHost}:${this.postgresPort}/${this.postgresDatabase}`
     }
 
     /**
      * Stops the container and removes it.
      */
     async stop() {
-        // TODO actual implementation
         await this.container.stop()
     }
 }

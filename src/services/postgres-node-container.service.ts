@@ -1,4 +1,6 @@
-import * as getPort  from "get-port";
+// import getPort from "get-port";
+// const getPort = require("get-port");
+import { getPort } from 'get-port-please'
 import {RunningPostgresContainerModel} from "../models/running-postgres-container.model";
 import {GenericContainer} from "testcontainers";
 import {PortWithOptionalBinding} from "testcontainers/dist/port";
@@ -8,8 +10,8 @@ export class PostgresNodeContainerService {
     // TODO docs
     async setupPostgresContainer(
         username = 'postgres',
-        password = 'default',
-        databaseName = 'default'
+        password = 'postgres123',
+        databaseName = 'default',
     ): Promise<RunningPostgresContainerModel> {
         const containerPort = await this.getAvailableTCPPort();
         try {
@@ -31,7 +33,11 @@ export class PostgresNodeContainerService {
                 containerPort,
                 databaseName
             );
-        } catch (ignored) {
+        } catch (exception) {
+            // means port is already in use. use a different port
+            if(exception.json.message.includes('driver failed programming external connectivity')) {
+
+            }
             // TODO handle error
             return undefined;
         }
@@ -41,8 +47,6 @@ export class PostgresNodeContainerService {
      * Gets a TCP port that is available on the host machine.
      */
     private async getAvailableTCPPort(): Promise<number> {
-        const preferredPort = 5432;
-        // return await getPort({ port: preferredPort });
-        return preferredPort
+        return await getPort();
     }
 }
