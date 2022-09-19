@@ -1,14 +1,20 @@
-// import getPort from "get-port";
-// const getPort = require("get-port");
 import { getPort } from 'get-port-please'
 import {RunningPostgresContainerModel} from "../models/running-postgres-container.model";
 import {GenericContainer} from "testcontainers";
 import {PortWithOptionalBinding} from "testcontainers/dist/port";
 import {CouldNotCreateContainerError} from "../errors/could-not-create-container.error";
 
-// TODO docs
+/**
+ * Service for starting container
+ */
 export class PostgresNodeContainerService {
-    // TODO docs
+    /**
+     * Setups a brand new postgres container
+     * @param username - username for the postgres container
+     * @param password - password for the postgres container
+     * @param databaseName - database name for the postgres container
+     * @param postgresContainerTag - tag for the postgres container (all tags can be found on https://hub.docker.com/_/postgres)
+     */
     async setupPostgresContainer(
         username = 'postgres',
         password = 'postgres123',
