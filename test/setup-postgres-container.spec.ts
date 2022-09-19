@@ -43,7 +43,7 @@ describe('setup postgres container', () => {
         const password = 'superSecret';
         const database = 'superSecret';
 
-        const postgresContainer = await postgresContainerService.setupPostgresContainer(username, password, database);
+        const postgresContainer = await postgresContainerService.setupPostgresContainer(username, password, database, 'latest');
         const client = new Client({
             user: username,
             host: postgresContainer.postgresHost,
@@ -79,5 +79,26 @@ describe('setup postgres container', () => {
         expect(postgresContainer2.postgresPort).not.toBe(postgresContainer.postgresPort) // different port
         await assertWorkingPostgresDatabase(client2)
         await postgresContainer.stop();
+    });
+
+    it('use custom postgres version', async () => {
+        expect.hasAssertions();
+        const username = 'johnDoe';
+        const password = 'superSecret';
+        const database = 'superSecret';
+        const databaseVersion = '11-alpine';
+
+        const postgresContainer = await postgresContainerService.setupPostgresContainer(username, password, database, databaseVersion);
+        const connectionString = postgresContainer.getPostgresConnectionString()
+        const client = new Client(connectionString)
+
+        const expectedDatabaseVersion = '11.9';
+        client.connection.on('parameterStatus', msg => {
+            if (msg.parameterName === 'server_version') {
+                const actualVersion = msg.parameterValue;
+                expect(actualVersion).toBe(expectedDatabaseVersion) // postgres version is correct
+            }
+        });
+        await client.connect();
     });
 });
