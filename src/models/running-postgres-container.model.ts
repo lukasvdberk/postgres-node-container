@@ -1,7 +1,5 @@
-import {StartedTestContainer} from "testcontainers";
-
 export class RunningPostgresContainerModel {
-    private readonly container: StartedTestContainer
+    private readonly container: any
     postgresHost: string
     postgresUsername: string
     postgresPassword: string
@@ -9,7 +7,7 @@ export class RunningPostgresContainerModel {
     postgresDatabase: string
 
 
-    constructor(container: StartedTestContainer, postgresHost: string, postgresUsername: string, postgresPassword: string, postgresPort: number, postgresDatabase: string) {
+    constructor(container: any, postgresHost: string, postgresUsername: string, postgresPassword: string, postgresPort: number, postgresDatabase: string) {
         this.container = container;
         this.postgresHost = postgresHost;
         this.postgresUsername = postgresUsername;

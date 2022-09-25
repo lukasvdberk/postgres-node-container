@@ -93,7 +93,7 @@ describe('setup postgres container', () => {
         const client = new Client(connectionString)
 
         const expectedDatabaseVersion = '11.9';
-        client.connection.on('parameterStatus', msg => {
+        (client as any).connection.on('parameterStatus', (msg: any) => {
             if (msg.parameterName === 'server_version') {
                 const actualVersion = msg.parameterValue;
                 expect(actualVersion).toBe(expectedDatabaseVersion) // postgres version is correct

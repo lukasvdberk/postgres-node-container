@@ -10,6 +10,7 @@ import {CouldNotCreateContainerError} from "../errors/could-not-create-container
 export class PostgresNodeContainerService {
     /**
      * Setups a brand new postgres container
+     * @throws CouldNotCreateContainerError
      * @param username - username for the postgres container
      * @param password - password for the postgres container
      * @param databaseName - database name for the postgres container
@@ -41,7 +42,7 @@ export class PostgresNodeContainerService {
                 containerPort,
                 databaseName
             );
-        } catch (exception) {
+        } catch (exception: any) {
             throw new CouldNotCreateContainerError(exception.message);
         }
     }

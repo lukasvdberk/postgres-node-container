@@ -68,3 +68,4 @@ npm run test
 - [x] Add tests
 - [x] Add examples
 - [x] Add documentation
+- [ ] Fix package installation and usage with examples

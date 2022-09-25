@@ -1,28 +1,9 @@
 {
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "include": ["src/**/*"],
   "compilerOptions": {
+    // Generate d.ts files
     "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "incremental": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "baseUrl": ".",
-    "allowJs": true,
-    "moduleResolution": "Node",
-    "target": "es2019",
-    "module": "commonjs"
+    "outDir": "dist"
   },
-  "include": [
-      "src/**/*",
-      "node_modules/@types/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-  ]
 }
