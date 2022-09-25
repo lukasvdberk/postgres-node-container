@@ -1,6 +1,6 @@
 {
   "name": "postgres-node-container",
-  "version": "0.0.2",
+  "version": "1.0.1",
   "description": "Easily start a postgres docker container from your integration tests with Node",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
     "start": "tsc --project tsconfig.json && node dist/index.js",
     "test": "jest --config ./test/jest-e2e.json --runInBand --verbose"
   },
-  "author": "",
+  "author": "lukasberk",
   "license": "ISC",
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
@@ -19,6 +19,18 @@
     "pg": "^8.8.0",
     "ts-jest": "^29.0.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukasvdberk/postgres-node-container.git"
+  },
+  "keywords": [
+    "postgres",
+    "docker",
+    "container",
+    "node",
+    "integration",
+    "test"
+  ],
   "dependencies": {
     "get-port": "^6.1.2",
     "get-port-please": "^2.6.1",
