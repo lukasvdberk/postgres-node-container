@@ -14,6 +14,8 @@ import {PostgresNodeContainerService} from "postgres-node-container";
 // setup a postgres container with random port and default credentials
 const postgresContainerService = new PostgresNodeContainerService();
 const postgresContainer = await postgresContainerService.setupPostgresContainer();
+
+// pass options to create a postgres client. Or pass the connection options to your ORM this is just a example usage
 const client = new Client({
     user: postgresContainer.postgresUsername,
     host: postgresContainer.postgresHost,
@@ -21,6 +23,9 @@ const client = new Client({
     password: postgresContainer.postgresPassword,
     port: postgresContainer.postgresPort,
 });
+
+
+// Will stop the container and delete the database content
 await postgresContainer.stop();
 ```
 
@@ -41,7 +46,6 @@ const client = new Client({
     port: postgresContainer.postgresPort,
 });
 
-// setup a postgres container with random port and default credentials
 await postgresContainer.stop();
 ```
 
