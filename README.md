@@ -8,8 +8,11 @@ npm install --save postgres-node-container
 
 # Usage
 Example usage of setting up a postgres container from NodeJS
-```js
+```ts
+import {PostgresNodeContainerService} from "postgres-node-container";
+
 // setup a postgres container with random port and default credentials
+const postgresContainerService = new PostgresNodeContainerService();
 const postgresContainer = await postgresContainerService.setupPostgresContainer();
 const client = new Client({
     user: postgresContainer.postgresUsername,
@@ -22,12 +25,13 @@ await postgresContainer.stop();
 ```
 
 Or set custom database with custom settings and credentials
-```bash
+```ts
 const username = 'johnDoe';
 const password = 'superSecret';
 const database = 'superSecret';
 const databaseVersion = '11-alpine';
 
+const postgresContainerService = new PostgresNodeContainerService();
 const postgresContainer = await postgresContainerService.setupPostgresContainer(username, password, database, databaseVersion);
 const client = new Client({
     user: postgresContainer.postgresUsername,
@@ -42,7 +46,8 @@ await postgresContainer.stop();
 ```
 
 You can also get generate connection string from the container
-```js
+```ts
+const postgresContainerService = new PostgresNodeContainerService();
 const postgresContainer = await postgresContainerService.setupPostgresContainer();
 const connectionString = postgresContainer.getPostgresConnectionString();
 
